@@ -11,7 +11,7 @@
 ### Using:
 
 ```js
-var linediv = $.line(x1, y1, x2, y2, opt, callback); // in body
+var linediv = $.line(x1, y1, x2, y2, opt, callback);
 ```
 
 or
@@ -22,11 +22,11 @@ var linediv = $('parent element').line(x1, y1, x2, y2, opt, callback);
 ```
 
 
-### Default options:
+### Default options are:
 
 
 ```js
-var opt = {
+{
     create: $('<div></div>'), // default it's div, you can change to $('<span></span>')
     class: '_line', 
     css: {  // you can change styles by $(..).css() directly on returned linediv like above...
