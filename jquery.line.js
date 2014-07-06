@@ -1,7 +1,8 @@
 /**
  * @author Szymon Działowski
- * @homepage 
- * @ver 1.0
+ * @homepage https://bitbucket.org/stopsopa/jquery.line
+ * @ver 1.0 2014-07-06
+ * 
  */
 ;(function ($) {
     function calcDistance(x1, y1, x2, y2) { // http://www.gwycon.com/calculating-the-distance-between-two-pixels/
