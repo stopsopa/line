@@ -7,7 +7,7 @@
 ***
 
 
-### Using:
+## Demo:
 
 [Demo](http://stopsopa.bitbucket.org/demos/jquery.line/demo.html)
 
