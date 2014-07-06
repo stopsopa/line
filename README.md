@@ -3,6 +3,7 @@
 ***
 
 > jQuery plugin to draw lines using pure DIV and pure CSS3
+> [Demo](http://stopsopa.bitbucket.org/demos/jquery.line/demo.html)
 
 ***
 
