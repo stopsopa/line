@@ -144,13 +144,14 @@
 
         var ang  = calcAngle(x1, y1, x2, y2);    // degrees
         
-        var c = correct(x1, y1, x2, y2, o/* half of line width */, ang)     
+        var c = correct(x1, y1, x2, y2, o/* half of line width */, ang)
+        c.distance = calcDistance(x1, y1, x2, y2);
         
         o.create
             .css({
                 borderTop: o.width+'px '+o.style+' '+o.color,
                 position: 'absolute',
-                width: calcDistance(x1, y1, x2, y2) + 'px',
+                width: c.distance + 'px',
                 '-webkit-transform': 'rotate(' + ang + 'deg)',
                 '-moz-transform': 'rotate(' + ang + 'deg)',
                 '-ms-transform': 'rotate(' + ang + 'deg)',
