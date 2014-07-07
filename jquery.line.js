@@ -29,7 +29,7 @@
             
         var o = $.extend(true, {
             cls: '_line',
-	    id: false,
+            id: false,
             css: {
                 borderTop: '1px solid black',
                 height: '0',
@@ -38,7 +38,7 @@
             }
         }, opt || {});
 
-	o.create = $(opt.create) || $('<div></div>');
+        o.create = opt.create ? $(opt.create) : $('<div></div>');
         opt.css && (o.css = opt.css);
 
         var angle = calcAngle(x1, y1, x2, y2);
@@ -56,7 +56,7 @@
 
                 'transform-origin' :  '0 0',
                 '-ms-transform-origin' : '0 0', /* IE 9 */
-                '-webkit-transform-origin' : '0 0', /* Chrome, Safari, Opera */			    
+                '-webkit-transform-origin' : '0 0', /* Chrome, Safari, Opera */                
 
                 top : y1+'px',
                 left : x1+'px'
