@@ -87,7 +87,6 @@
 		var step = 10;
 		var box = $('#switch');
 		this.states = function () {
-		    log('statest');
 		    var v = this.get();
 		    
 		    if (v !== false && v !== true) 
@@ -156,7 +155,6 @@
 	    
 	    
 	    function opt() {
-		log(correct.get());
 		return {
 		    width: width.html(),
 		    color: color.val(),
@@ -181,7 +179,6 @@
 	    var mesure = $('#mesure');
 	    function callback(div, o, c, leave) {
 		if (mesure.is(':checked') && o.correct !== false && o.correct !== true) {
-		    log(c)
 		    a = $.line(c.x1, c.y1, c.b1, c.b2, hopt);
 		    b = $.line(c.x2, c.y2, c.d1, c.d2, $.extend({}, hopt, {color: 'green'}));
 		    if (leave) {
@@ -203,6 +200,7 @@
 		.mousedown(function (e) {
 		    x1 = e.pageX;
 		    y1 = e.pageY;
+		    t = false;
 		    run = true;
 		})
 		.mouseup(function (e) {
