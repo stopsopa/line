@@ -1,8 +1,7 @@
 /**
  * @author Szymon Działowski
  * @homepage https://bitbucket.org/stopsopa/jquery.line
- * @ver 1.0 2014-07-06
- * 
+ * @ver 1.0
  */
 ;(function ($) {
     function calcDistance(x1, y1, x2, y2) { // http://www.gwycon.com/calculating-the-distance-between-two-pixels/
@@ -22,15 +21,15 @@
             x1 = e;
             e = y1;
             y1 = y2;
-            y2 = e
+            y2 = e;
         }
 
         if ($(this).length > 1) 
-            throw "$(this) is more then one element";		    
-
+            throw "$(this) is more then one element";            
+            
         var o = $.extend(true, {
-            create: $('<div></div>'),
-            class: '_line',
+            cls: '_line',
+	    id: false,
             css: {
                 borderTop: '1px solid black',
                 height: '0',
@@ -39,6 +38,7 @@
             }
         }, opt || {});
 
+	o.create = $(opt.create) || $('<div></div>');
         opt.css && (o.css = opt.css);
 
         var angle = calcAngle(x1, y1, x2, y2);
@@ -62,11 +62,12 @@
                 left : x1+'px'
             });
 
-        o.class && o.create.addClass(o.class);
+        o.cls && o.create.addClass(o.cls);
+        o.id && o.create.attr('id', o.id);
 
-        o.create.appendTo($(this));
+        o.create.appendTo(this);
         
-        typeof callback == 'function' && callback(o.create, o);
+        (typeof callback == 'function') && callback(o.create, o);
         
         return o.create;
     };

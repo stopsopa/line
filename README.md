@@ -33,7 +33,8 @@ var linediv = $('parent element').line(x1, y1, x2, y2, opt, callback);
 ```js
 {
     create: $('<div></div>'), // default it's div, you can change to $('<span></span>')
-    class: '_line', 
+    cls: '_line', 
+    id : false,
     css: {  // you can change styles by $(..).css() directly on returned linediv like above...
         borderTop: '1px solid black',
         height: '0',
