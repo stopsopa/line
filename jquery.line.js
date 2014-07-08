@@ -23,7 +23,7 @@
         ang || (ang = calcAngle(x1, y1, x2, y2));
         
         var hw  = o.width/2;
-        var hwo = hw// originial
+        var hwo = hw // originial
         
         var sw = false;
         
@@ -31,23 +31,23 @@
             var c = o.correct;
             switch(true) {
                 case o.correctpos == 'normal':
-                    hw += o.correct;
+                    hw += c;
                     break;
                 case o.correctpos == 'top'    && (ang > 90 && ang < 270) : 
                     sw = true;
-                    c = 0 - Math.abs(c); 
+                    c = - Math.abs(c); 
                     break;
                 case o.correctpos == 'bottom' && (ang < 90 || ang > 270) :  
                     sw = true;
-                    c = 0 - Math.abs(c); 
+                    c = - Math.abs(c); 
                     break;
                 case o.correctpos == 'left'   && (ang > 0 && ang < 180) :  
                     sw = true;
-                    c = 0 - Math.abs(c); 
+                    c = - Math.abs(c); 
                     break;
                 case o.correctpos == 'right'  && (ang < 0 || ang > 180) :
                     sw = true;
-                    c = 0 - Math.abs(c);  
+                    c = - Math.abs(c);  
                     break;
             }
             hw += c;
@@ -58,23 +58,22 @@
         
         var c = {};
         if (o.correct === false) {
-            c.x = 0;
-            c.y = 0;
+            c.x = c.y = c.oy = c.ox = 0;
         }
         else {
-            c.y = Math.sin(radminhalf)  * hw;
-            c.x = Math.cos(radminhalf)  * hw;
-            c.oy = Math.sin(radminhalf) * hwo; // without correct
-            c.ox = Math.cos(radminhalf) * hwo; // without correct
+            c.y  = Math.sin(radminhalf) * hw;
+            c.x  = Math.cos(radminhalf) * hw;
+            c.oy = Math.sin(radminhalf) * hwo; // without correction
+            c.ox = Math.cos(radminhalf) * hwo; // without correction
         }
         c.ang = ang;
         c.rad = rad
         c.ox2 = c.ox * 2;
         c.oy2 = c.oy * 2;
-        c.x1 = x1;
-        c.y1 = y1;
-        c.x2 = x2;
-        c.y2 = y2;
+        c.x1  = x1;
+        c.y1  = y1;
+        c.x2  = x2;
+        c.y2  = y2;
         
         if (sw) {  
             c.ax = c.x1 - c.ox2;
@@ -120,7 +119,7 @@
             width: 1,
             color: 'black',
             
-            cls: '_line',
+            cls: 'jqline',
             id: false,
             correct: true, // bool|int - corection of position, give integer to move 
             correctpos: 'normal', // normal, top, bottom, left, right
@@ -154,13 +153,13 @@
                 '-ms-transform-origin' : '0 0', /* IE 9 */
                 '-webkit-transform-origin' : '0 0', /* Chrome, Safari, Opera */                
 
-                top : (y1 + c.y)+'px',
+                top  : (y1 + c.y)+'px',
                 left : (x1 + c.x)+'px'
             })
             .css(o.css);
 
         o.cls && o.create.addClass(o.cls);
-        o.id && o.create.attr('id', o.id);
+        o.id  && o.create.attr('id', o.id);
 
         o.create.appendTo(this);
         
