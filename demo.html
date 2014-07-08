@@ -182,8 +182,8 @@
 	    var mesure = $('#mesure');
 	    function callback(div, o, c, leave) {
 		if (mesure.is(':checked') && o.correct !== false && o.correct !== true) {
-		    a = $.line(c.x1, c.y1, c.b1, c.b2, hopt);
-		    b = $.line(c.x2, c.y2, c.d1, c.d2, $.extend({}, hopt, {color: 'green'}));
+		    a = $.line(c.x1, c.y1, c.bx, c.by, hopt);
+		    b = $.line(c.x2, c.y2, c.dx, c.dy, $.extend({}, hopt, {color: 'green'}));
 		    if (leave) {
 			a = b = null;
 		    }

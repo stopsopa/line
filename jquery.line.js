@@ -33,29 +33,21 @@
                 case o.correctpos == 'normal':
                     hw += o.correct;
                     break;
-                case o.correctpos == 'top':                    
-                    if (ang > 90 && ang < 270) {
-                        sw = true;
-                        c = 0 - Math.abs(c);   
-                    }                   
+                case o.correctpos == 'top'    && (ang > 90 && ang < 270) : 
+                    sw = true;
+                    c = 0 - Math.abs(c); 
                     break;
-                case o.correctpos == 'bottom':                   
-                    if (ang < 90 || ang > 270) {
-                        sw = true;
-                        c = 0 - Math.abs(c);   
-                    }
+                case o.correctpos == 'bottom' && (ang < 90 || ang > 270) :  
+                    sw = true;
+                    c = 0 - Math.abs(c); 
                     break;
-                case o.correctpos == 'left':                   
-                    if (ang > 0 && ang < 180) {
-                        sw = true;
-                        c = 0 - Math.abs(c);  
-                    }
+                case o.correctpos == 'left'   && (ang > 0 && ang < 180) :  
+                    sw = true;
+                    c = 0 - Math.abs(c); 
                     break;
-                case o.correctpos == 'right':                    
-                    if (ang < 0 || ang > 180) {
-                        sw = true;
-                        c = 0 - Math.abs(c);  
-                    }
+                case o.correctpos == 'right'  && (ang < 0 || ang > 180) :
+                    sw = true;
+                    c = 0 - Math.abs(c);  
                     break;
             }
             hw += c;
@@ -85,30 +77,30 @@
         c.y2 = y2;
         
         if (sw) {  
-            c.a1 = c.x1 - c.ox2;
-            c.a2 = c.y1 - c.oy2;
+            c.ax = c.x1 - c.ox2;
+            c.ay = c.y1 - c.oy2;
             
-            c.b1 = c.a1 + c.x;
-            c.b2 = c.a2 + c.y;
+            c.bx = c.ax + c.x;
+            c.by = c.ay + c.y;
 
-            c.c1 = c.x2 + c.x
-            c.c2 = c.y2 + c.y;
+            c.cx = c.x2 + c.x
+            c.cy = c.y2 + c.y;
 
-            c.d1 = c.c1 - c.ox2;
-            c.d2 = c.c2 - c.oy2;
+            c.dx = c.cx - c.ox2;
+            c.dy = c.cy - c.oy2;
         }
         else {            
-            c.b1 = c.x1 + c.x;
-            c.b2 = c.y1 + c.y;
+            c.bx = c.x1 + c.x;
+            c.by = c.y1 + c.y;
 
-            c.a1 = c.b1 - c.ox2;
-            c.a2 = c.b2 - c.oy2;
+            c.ax = c.bx - c.ox2;
+            c.ay = c.by - c.oy2;
 
-            c.d1 = c.x2 + c.x;
-            c.d2 = c.y2 + c.y;
+            c.dx = c.x2 + c.x;
+            c.dy = c.y2 + c.y;
 
-            c.c1 = c.d1 - c.ox2
-            c.c2 = c.d2 - c.oy2;
+            c.cx = c.dx - c.ox2
+            c.cy = c.dy - c.oy2;
         }
         
         return c;
