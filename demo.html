@@ -228,7 +228,7 @@
                         callback(div, o, c, true);
                         track(JSON.stringify({
                             s: o.style, 
-                            w: o.width,
+                            w: parseInt(o.width),
                             c: o.color
                         }));
                     });
