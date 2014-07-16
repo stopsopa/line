@@ -72,7 +72,8 @@
         function track(style) {
             style || (style = 'unknown');
             try {
-                _gaq.push(['_trackEvent', 'Events', 'DrawLine', style]);
+                //_gaq.push(['_trackEvent', 'Events', 'DrawLine', style]); // https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide?hl=pl#SettingUpEventTracking
+                ga('send', 'event', 'Events', 'DrawLine', style); // https://developers.google.com/analytics/devguides/collection/analyticsjs/events?hl=pl
             }
             catch (e) {}
         }
