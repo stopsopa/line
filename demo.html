@@ -26,7 +26,7 @@
     <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,800&subset=latin,cyrillic-ext,latin-ext,cyrillic" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="jquery.line.js"></script>
     
-    <style type="text/css">
+    <style type="text/css">        
         body {
             margin: 0;
             padding: 0;
@@ -69,6 +69,14 @@
     
     <script type="text/javascript">
 	function log(l) {try {console.log(l);}catch (e) {}}
+        function track(style) {
+            style || (style = 'unknown');
+            try {
+                _gaq.push(['_trackEvent', 'Events', 'DrawLine', style]);
+            }
+            catch (e) {}
+        }
+        
         $(function () {
 	    var width = $('#width');
 	    var color = $('#color');
@@ -208,7 +216,7 @@
 		    x1 = e.pageX;
 		    y1 = e.pageY;
 		    t = false;
-		    run = true;
+		    run = true;                                        
 		})
 		.mouseup(function (e) {
 		    if ( (x1 - e.pageX) < 4 && (y1 - e.pageY) < 4 ) {
@@ -219,7 +227,12 @@
 		    a && a.remove();
 		    b && b.remove();
 		    $.line(x1, y1, e.pageX, e.pageY, opt(), function (div, o, c) {
-			callback(div, o, c, true)
+			callback(div, o, c, true);
+                        track(JSON.stringify({
+                            s: o.style, 
+                            w: o.width,
+                            c: o.color
+                        }));
 		    });
 		});
 	    
