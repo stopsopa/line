@@ -69,11 +69,12 @@
     
     <script type="text/javascript">
     function log(l) {try {console.log(l);}catch (e) {}}
-        function track(style) {
+        function track(style, action) {
             style || (style = 'unknown');
+            action || (action = 'DrawLine');
             try {
                 //_gaq.push(['_trackEvent', 'Events', 'DrawLine', style]); // https://developers.google.com/analytics/devguides/collection/gajs/eventTrackerGuide?hl=pl#SettingUpEventTracking
-                ga('send', 'event', 'Events', 'DrawLine', style); // https://developers.google.com/analytics/devguides/collection/analyticsjs/events?hl=pl
+                ga('send', 'event', 'Events', action, style); // https://developers.google.com/analytics/devguides/collection/analyticsjs/events?hl=pl
             }
             catch (e) {}
         }
@@ -232,6 +233,22 @@
                         }));
                     });
                 });
+                
+                
+                (function () {                    
+                    var go = false;
+                    $('#home').click(function (e) {
+                        e.preventDefault();
+                        var h = $(this).attr('href');
+                        if (!go) {
+                            go = true;
+                            track('home', 'redirect');
+                            setTimeout(function () {
+                                location.href = h;
+                            },1000);
+                        }
+                    });
+                })();
         
         });
     </script>
