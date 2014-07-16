@@ -78,163 +78,159 @@
         }
         
         $(function () {
-        var width = $('#width');
-        var color = $('#color');
+            var width = $('#width');
+            var color = $('#color');
             $('#up, #down').click(function () {
-        var t = $(this);
-        var v = parseInt(width.html());
-        if (t.is('#up')) {
-            ++v
-        }
-        else {
-            --v;
-            if (v < 1) {
-            v = 1;
+                var t = $(this);
+                var v = parseInt(width.html());
+                if (t.is('#up')) {
+                    ++v
+                }
+                else {
+                    --v;
+                    if (v < 1) {
+                        v = 1;
+                    }
+                }
+                width.html(v);
+            });
+
+
+            function Correct() {
+                var correct = $('#correct');
+                var that = this;
+                var step = 10;
+                var box = $('#switch');
+                this.states = function () {
+                    var v = this.get();
+
+                    if (v !== false && v !== true) 
+                        return box.find('input').removeAttr('disabled');
+
+                    box.find('input').attr('disabled', 'disabled');
+                    return this;
+                };
+                $('#cup').click(function () {
+                    var v = that.get();
+                    var v = that.get();
+                    if (v === true) {
+                        correct.html(step+'');
+                        return that.states();
+                    }
+                    if (v === false) {
+                        correct.html('true');
+                        return that.states();
+                    }
+                    if (v === 0-step) {
+                        correct.html('false');
+                        return that.states();
+                    }
+                    correct.html(v+step);
+                    that.states();
+                });
+                $('#cdown').click(function () {
+                    var v = that.get();
+                    if (v === true) {
+                        correct.html('false');
+                        return that.states();
+                    }
+                    if (v === false) {
+                        correct.html('-'+(step+''));
+                        return that.states();
+                    }
+                    if (v === step) {
+                        correct.html('true');
+                        return that.states();
+                    }
+                    correct.html(v-step);
+                    that.states();
+                });
+                this.get = function () {
+                    var v = correct.html();
+                    if (v == 'true') {
+                        return true;
+                    }
+                    if (v == 'false') {
+                        return false;
+                    }
+                    return parseInt(v);
+                };
             }
-        }
-        width.html(v);
-        });
-        
-        
-        function Correct() {
-        var correct = $('#correct');
-        var that = this;
-        var step = 10;
-        var box = $('#switch');
-        this.states = function () {
-            var v = this.get();
-            
-            if (v !== false && v !== true) 
-            return box.find('input').removeAttr('disabled');
-            
-            box.find('input').attr('disabled', 'disabled');
-            return this;
-        };
-        $('#cup').click(function () {
-            var v = that.get();
-            var v = that.get();
-            if (v === true) {
-            correct.html(step+'');
-            return that.states();
-            }
-            if (v === false) {
-            correct.html('true');
-            return that.states();
-            }
-            if (v === 0-step) {
-            correct.html('false');
-            return that.states();
-            }
-            correct.html(v+step);
-            that.states();
-        });
-        $('#cdown').click(function () {
-            var v = that.get();
-            if (v === true) {
-            correct.html('false');
-            return that.states();
-            }
-            if (v === false) {
-            correct.html('-'+(step+''));
-            return that.states();
-            }
-            if (v === step) {
-            correct.html('true');
-            return that.states();
-            }
-            correct.html(v-step);
-            that.states();
-        });
-        this.get = function () {
-            var v = correct.html();
-            if (v == 'true') {
-            return true;
-            }
-            if (v == 'false') {
-            return false;
-            }
-            return parseInt(v);
-        };
-        
-        
-        }
-        var correct = (new Correct()).states();
-        
+            var correct = (new Correct()).states();
+
             $('.minicolors').minicolors({
                 control: 'hue',
                 inline: false,
                 letterCase: 'uppercase',
                 theme: 'bootstrap'
             });
-        
-        
-        
-        function opt() {
-        return {
-            width: width.html(),
-            color: color.val(),
-            style: $('[name="style"]:checked').val(),
-            correct: correct.get(),
-            correctpos: $('[name="correctpos"]:checked').val(),
-            css : {
-            height: '0',
-            zIndex: '999',
-            zoom: 1
+
+            function opt() {
+                return {
+                    width: width.html(),
+                    color: color.val(),
+                    style: $('[name="style"]:checked').val(),
+                    correct: correct.get(),
+                    correctpos: $('[name="correctpos"]:checked').val(),
+                    css : {
+                    height: '0',
+                    zIndex: '999',
+                    zoom: 1
+                    }
+                };
             }
-        };
-        }
-        
-        var a, b, hopt = {
-        color: 'red',
-        css : {
-            zIndex: '1000'
-        }
-        };
-        
-        var mesure = $('#mesure');
-        function callback(div, o, c, leave) {
-        if (mesure.is(':checked') && o.correct !== false && o.correct !== true) {
-            a = $.line(c.x1, c.y1, c.bx, c.by, hopt);
-            b = $.line(c.x2, c.y2, c.dx, c.dy, $.extend({}, hopt, {color: 'green'}));
-            if (leave) {
-            a = b = null;
+
+            var a, b, hopt = {
+                color: 'red',
+                css : {
+                    zIndex: '1000'
+                }
+            };
+
+            var mesure = $('#mesure');
+            function callback(div, o, c, leave) {
+                if (mesure.is(':checked') && o.correct !== false && o.correct !== true) {
+                    a = $.line(c.x1, c.y1, c.bx, c.by, hopt);
+                    b = $.line(c.x2, c.y2, c.dx, c.dy, $.extend({}, hopt, {color: 'green'}));
+                    if (leave) {
+                        a = b = null;
+                    }
+                }
             }
-        }
-        }
-        
-        var x1, y1, x2, y2, run = false, t = $();
-        $(window)
-        .mousemove(function(e) {
-            if (run) {
-            t && t.remove();
-            a && a.remove();
-            b && b.remove();
-            t = $.line(x1, y1, e.pageX, e.pageY, opt(), callback);
-            }
-        })
-        .mousedown(function (e) {
-            x1 = e.pageX;
-            y1 = e.pageY;
-            t = false;
-            run = true;                                        
-        })
-        .mouseup(function (e) {
-            if ( (x1 - e.pageX) < 4 && (y1 - e.pageY) < 4 ) {
-            return run = false;            
-            }
-            run = false;
-            t && t.remove();
-            a && a.remove();
-            b && b.remove();
-            $.line(x1, y1, e.pageX, e.pageY, opt(), function (div, o, c) {
-            callback(div, o, c, true);
+
+            var x1, y1, x2, y2, run = false, t = $();
+            $(window)
+                .mousemove(function(e) {
+                    if (run) {
+                    t && t.remove();
+                    a && a.remove();
+                    b && b.remove();
+                    t = $.line(x1, y1, e.pageX, e.pageY, opt(), callback);
+                    }
+                })
+                .mousedown(function (e) {
+                    x1 = e.pageX;
+                    y1 = e.pageY;
+                    t = false;
+                    run = true;                                        
+                })
+                .mouseup(function (e) {
+                    if ( (x1 - e.pageX) < 4 && (y1 - e.pageY) < 4 ) {
+                        return run = false;            
+                    }
+                    run = false;
+                    t && t.remove();
+                    a && a.remove();
+                    b && b.remove();
+                    $.line(x1, y1, e.pageX, e.pageY, opt(), function (div, o, c) {
+                        callback(div, o, c, true);
                         track(JSON.stringify({
                             s: o.style, 
                             w: o.width,
                             c: o.color
                         }));
-            });
-        });
+                    });
+                });
         
         });
     </script>
