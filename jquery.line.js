@@ -3,6 +3,7 @@
  * @homepage https://bitbucket.org/stopsopa/jquery.line
  * @ver 1.0 2014-07-06
  * @ver 1.1 2014-07-07 upgrades, corrections
+ * @ver 1.2 2015-05-01 drawing line by rad/ang and distance from point x and x, fix manual
  */
 
 (function( factory ) {
