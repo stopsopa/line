@@ -26,6 +26,20 @@ or
 var linediv = $('parent element').line(x1, y1, x2, y2, opt, callback);
 ```
 
+or
+
+radians and distance
+```js
+var linediv = $('parent element').line(x1, y1, {rad: 1/2, dis: 200}, opt, callback);
+```
+or
+
+
+angle and distance
+```js
+var linediv = $('parent element').line(x1, y1, {ang: 45, dis: 200}, opt, callback);
+```
+
 
 ### Default options are:
 
@@ -35,12 +49,17 @@ var linediv = $('parent element').line(x1, y1, x2, y2, opt, callback);
     create: $('<div></div>'), // default it's div, you can change to $('<span></span>')
     cls: '_line', 
     id : false,
-    css: {  // you can change styles by $(..).css() directly on returned linediv like above...
-        borderTop: '1px solid black',
+    css: {  
+        // you can change styles by $(..).css() directly on returned linediv like here...
+        // but be carefull that you can override 
+        // 'width', 'style' or 'color' defined few lines below
         height: '0',
         zIndex: '999',
         zoom: 1
-    }
+    },
+    width: 1,
+    style: 'solid',
+    color: 'black'
 }
 ```
 
