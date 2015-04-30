@@ -240,12 +240,12 @@
         };
 
         // expose tools to use outside
-        $[name].radToAng                = radToAng;
-        $[name].angToRad                = angToRad;
-        $[name].calcDistance            = calcDistance;
-        $[name].calcAngleRad            = calcAngleRad;
-        $[name].calcAngle               = calcAngle;
-        $[name].calcXYOffsetByVectorAngle     = calcXYOffsetByVectorAngle;
-        $[name].calcXYOffsetByVectorAngleRad  = calcXYOffsetByVectorAngleRad;
+        $[name].radToAng                        = radToAng;
+        $[name].angToRad                        = angToRad;
+        $[name].calcDistance                    = calcDistance;
+        $[name].calcAngleRad                    = calcAngleRad;
+        $[name].calcAngle                       = calcAngle;
+        $[name].calcXYOffsetByVectorAngle       = calcXYOffsetByVectorAngle;
+        $[name].calcXYOffsetByVectorAngleRad    = calcXYOffsetByVectorAngleRad;
     }
 })('line', Math.PI)); // to change name of plugin simply change it in this place
