@@ -16,13 +16,15 @@
 ### Using:
 
 ```js
-var linediv = $.line(x1, y1, x2, y2, opt, callback);
+var linediv =                   $.line(x1, y1, x2, y2, opt, callback);
+var linediv = $('parent element').line(x1, y1, x2, y2, opt, callback);
 ```
 
 or
 
 
 ```js
+var linediv =                   $.line(x1, y1, x2, y2, opt, callback);
 var linediv = $('parent element').line(x1, y1, x2, y2, opt, callback);
 ```
 
@@ -30,6 +32,7 @@ or
 
 radians and distance
 ```js
+var linediv =                   $.line(x1, y1, {rad: 1/2, dis: 200}, opt, callback);
 var linediv = $('parent element').line(x1, y1, {rad: 1/2, dis: 200}, opt, callback);
 ```
 or
@@ -37,6 +40,7 @@ or
 
 angle and distance
 ```js
+var linediv =                   $.line(x1, y1, {ang: 45, dis: 200}, opt, callback);
 var linediv = $('parent element').line(x1, y1, {ang: 45, dis: 200}, opt, callback);
 ```
 
