@@ -24,6 +24,9 @@
         function _a(a) {
             return Array.prototype.slice.call(a, 0);
         }
+        function isFunction (a) { // taken from underscore.js
+            return typeof a == 'function' || false;
+        };
         function isObject(obj) {
             var type = typeof obj;
             return type === 'function' || type === 'object' && !!obj;
@@ -149,7 +152,7 @@
          * var linediv = $('parent element').line(x1, y1, {ang: 45, dis: 200}, opt, callback);
          * var linediv =                   $.line(x1, y1, {ang: 45, dis: 200}, opt, callback);
          */                  //0   1   2   3   4    5          
-        $.fn[name] = function (x1, y1, x2, y2, opt, callback) {
+        $.fn[name] = function (x1, y1, x2, y2, opt, callback) {                        
             
             if (isObject(x2)) {
                 var k = 0, a = _a(arguments); 
@@ -166,8 +169,16 @@
                 a[4] = a[3];
                 a[2] = x1 + k.x;
                 a[3] = y1 + k.y;
+                log(a);
                 
                 return $.fn[name].apply(this, a);
+            }
+            
+            if (isFunction(opt)) {
+                callback = opt;
+            }
+            else if (isFunction(callback)) {
+                opt = callback;
             }
 
             opt || (opt = {});
@@ -228,7 +239,7 @@
 
             o.create.appendTo(this);
 
-            (typeof callback == 'function') && callback(o.create, o, c);
+            (isFunction(callback)) && callback(o.create, o, c);
 
             return o.create;
         };
