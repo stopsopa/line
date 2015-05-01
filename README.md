@@ -32,8 +32,8 @@ or
 
 radians and distance
 ```js
-var linediv =                   $.line(x1, y1, {rad: 1/2, dis: 200}, opt, callback);
-var linediv = $('parent element').line(x1, y1, {rad: 1/2, dis: 200}, opt, callback);
+var linediv =                   $.line(x1, y1, {rad: Math.PI/4, dis: 200}, opt, callback);
+var linediv = $('parent element').line(x1, y1, {rad: Math.PI/4, dis: 200}, opt, callback);
 ```
 or
 
