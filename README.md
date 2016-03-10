@@ -2,7 +2,7 @@
 
 ***
 
-> jQuery plugin to draw lines using pure DIV and pure CSS3
+> jQuery plugin to draw lines using single DIV and pure CSS3
 
 ***
 
