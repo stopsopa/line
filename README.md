@@ -46,9 +46,10 @@ var linediv = $('parent element').line(x1, y1, {ang: 45, dis: 200}, opt, callbac
     cls: '_line', 
     id : false,
     css: {  
-        // you can change styles by $(..).css() directly on returned linediv like here...
-        // but be carefull that you can override 
-        // 'width', 'style' or 'color' defined few lines below
+        // you can change styles of div in js here through $(..).css()
+        // but be careful that you can override here property used
+        // to calculations ('width') 
+        // which is defined right below        
         height: '0',
         zIndex: '999',
         zoom: 1
