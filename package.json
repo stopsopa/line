@@ -1,0 +1,17 @@
+{
+  "name": "@stopsopa/line",
+  "version": "2.0.0",
+  "description": "Lib to draw lines using one div and css",
+  "main": "line.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:stopsopa/line.git"
+  },
+  "author": "Szymon Dzialowski",
+  "license": "MIT",
+  "homepage": "https://github.com/stopsopa/line"
+}
