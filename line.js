@@ -88,11 +88,11 @@
     function calcDistance(x1, y1, x2, y2) { // http://www.gwycon.com/calculating-the-distance-between-two-pixels/
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
-    // count angle in radians
+    // calculate angle in radians
     function calcAngleRad(x1, y1, x2, y2) {
         return Math.atan2( (y2 - y1) , (x2 - x1) );
     }
-    // count angle in degrees
+    // calculate angle in degrees
     function calcAngle(x1, y1, x2, y2) {
         var a = calcAngleRad(x1, y1, x2, y2) * (180 / pi);
         return (a < 0) ? (a += 360) : a;
@@ -328,12 +328,28 @@
     };
 
     // // expose tools to use outside
+
+    // converting radians to angle
     tool.radToAng                        = radToAng;
+
+    // converting angle to radians
     tool.angToRad                        = angToRad;
+
+    // calc distance between two points of two points x1, y1, x2, y2
     tool.calcDistance                    = calcDistance;
+
+    // calculate angle in radians x1, y1, x2, y2
     tool.calcAngleRad                    = calcAngleRad;
+
+    // calculate angle in degrees x1, y1, x2, y2
     tool.calcAngle                       = calcAngle;
+
+    // calculate points based on angle and distance
+    // calcXYOffsetByVectorAngle(x2.ang, x2.dis)
     tool.calcXYOffsetByVectorAngle       = calcXYOffsetByVectorAngle;
+
+    // calculate points based on radians and distance
+    // calcXYOffsetByVectorAngleRad(x2.rad, x2.dis)
     tool.calcXYOffsetByVectorAngleRad    = calcXYOffsetByVectorAngleRad;
 
     return tool;
