@@ -1,3 +1,9 @@
+# DEPRECATED
+Created in 2018 - quite old now and not maintained.
+
+That was actually fun to build back then. 
+And Math from here can be still used... Math is never old. But nothing advanced is really here. just simple trigonometry.
+
 # jQuery.line plugin
 
 ***
