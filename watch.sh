@@ -10,9 +10,8 @@ while [ "${STATUS}" = "0" ]; do
         echo "${0} ${WATCHC} log: waiting for ${FILE} to be created"
         sleep 1
     done
-    cat package.json
     make build
-    echo --- waiting ---
+    echo --- waiting for change ---
     node "${ROOT}/bash/fs/watch.js" "${FILE}"
     STATUS="${?}"
 done
