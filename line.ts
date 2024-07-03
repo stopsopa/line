@@ -146,13 +146,21 @@ function isNode(o: any): o is Node {
         typeof o.nodeType === "number" &&
         typeof o.nodeName === "string";
 }
+/**
+ * angle to radians
+ */
 export function angToRad(ang: number): number {
   return ang * (Math.PI / 180);
 }
+/**
+ * radians to angle
+ */
 export function radToAng(rad: number): number {
   return rad * (180 / Math.PI);
 }
-// calc distance between two points
+/**
+ * calc distance between two points
+ */
 export function calcDistance(
   x1: number,
   y1: number,
@@ -161,7 +169,9 @@ export function calcDistance(
 ): number {
   return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
 }
-// calculate angle in radians
+/**
+ * calculate angle in radians
+ */
 export function calcAngleRad(
   x1: number,
   y1: number,
@@ -170,7 +180,9 @@ export function calcAngleRad(
 ): number {
   return Math.atan2(y2 - y1, x2 - x1);
 }
-// calculate angle in degrees
+/**
+ * calculate angle in degrees
+ */
 export function calcAngle(
   x1: number,
   y1: number,
@@ -183,8 +195,10 @@ export function calcAngle(
 
 type XYType = { x: number; y: number };
 
-// calculate points based on radians and distance
-// calcXYOffsetByVectorAngleRad(x2.rad, x2.dis)
+/**
+ * calculate points based on radians and distance
+ * calcXYOffsetByVectorAngleRad(x2.rad, x2.dis)
+ */
 export function calcXYOffsetByVectorAngleRad(rad: number, dis: number): XYType {
   return {
     // http://stackoverflow.com/a/10962780
@@ -221,7 +235,9 @@ type Correct = {
 
 type CorrectExtended = Correct & { distance?: number };
 
-// calculate correction
+/**
+ * calculate correction
+ */
 function correct(
   x1: number,
   y1: number,
