@@ -1,16 +1,15 @@
-# DEPRECATED
-Created in 2018 - quite old now and not maintained.
 
-That was actually fun to build back then. 
-And Math from here can be still used... Math is never old. But nothing advanced is really here. just simple trigonometry.
 
-# jQuery.line plugin
+
+# What is it?
 
 ***
 
-> jQuery plugin to draw lines using single DIV and pure CSS3
+> simple library to draw lines using raw DIV and pure CSS3
 
 ***
+
+https://jsr.io/@stopsopa/line
 
 
 ## Demo:
