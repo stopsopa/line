@@ -6,6 +6,9 @@ yarn:
 build:
 	/bin/bash swap.sh -- node node_modules/.bin/esbuild libs/line.entry.js --bundle --outfile=dist/line.bundle.js --format=iife --loader:.js=js
 
+tsc:
+	npx tsc #  --showConfig
+
 watch: 
 	/bin/bash watch.sh
 

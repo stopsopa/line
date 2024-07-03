@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "@stopsopa/line",
   "version": "2.0.0",
   "description": "Lib to draw lines using one div and css",
