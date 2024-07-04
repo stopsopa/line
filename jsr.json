@@ -5,8 +5,17 @@
 
   "publish": {
     "exclude": [
-      "bash/",
+      "/bash/",
       "**/*.sh",
+      "package.dev.json",
+      ".tool-versions",
+      "Makefile",
+      "README.md",
+      "/dist/",
+      "",
+      "",
+      "",
+      "",
     ]
   }
 }
