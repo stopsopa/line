@@ -21,6 +21,8 @@ export type DistanceAndAngle = {
   dis: number;
 };
 
+const th = (msg: string) => new Error(`stopsopa/line error: ${msg}`);
+
 export function line(
   parent: HTMLElement,
   x1: number,
@@ -29,6 +31,10 @@ export function line(
   y2: number,
   opt: Options
 ): HTMLElement {
+  if (!isNode(parent)) {
+    throw th(`line(parent, ...) - parent is not a dom element`);
+  }
+
   const o: Options = {
     style: "solid",
     width: 1,
@@ -97,6 +103,18 @@ export function withAngleAndDistance(
   angAndDis: DistanceAndAngle | DistanceAndRadians,
   opt: Options
 ): HTMLElement {
+  if (!isNode(parent)) {
+    throw th(`withAngleAndDistance(parent, ...) - parent is not a dom element`);
+  }
+
+  if (typeof x1 !== "number") {
+    throw th(`withAngleAndDistance(parent, x1, y1, angAndDis, opt) - x1 is not number`);
+  }
+
+  if (typeof y1 !== "number") {
+    throw th(`withAngleAndDistance(parent, x1, y1, angAndDis, opt) - y1 is not number`);
+  }
+
   const a = Array.from(arguments);
 
   let k;
@@ -124,6 +142,22 @@ export function defualtParent(
   y2: number,
   opt: Options
 ): HTMLElement {
+  if (typeof x1 !== "number") {
+    throw th(`defualtParent(x1, y1, x2, y2, opt) - x1 is not number`);
+  }
+
+  if (typeof y1 !== "number") {
+    throw th(`defualtParent(x1, y1, x2, y2, opt) - y1 is not number`);
+  }
+
+  if (typeof x2 !== "number") {
+    throw th(`defualtParent(x1, y1, x2, y2, opt) - x2 is not number`);
+  }
+
+  if (typeof y2 !== "number") {
+    throw th(`defualtParent(x1, y1, x2, y2, opt) - y2 is not number`);
+  }
+
   return line(document.body, x1, y1, x2, y2, opt);
 }
 
@@ -133,6 +167,15 @@ export function withAngleAndDistanceDefualtParent(
   angAndDis: DistanceAndAngle | DistanceAndRadians,
   opt: Options
 ): HTMLElement {
+
+  if (typeof x1 !== "number") {
+    throw th(`withAngleAndDistanceDefualtParent(x1, y1, angAndDis, opt) - x1 is not number`);
+  }
+
+  if (typeof y1 !== "number") {
+    throw th(`withAngleAndDistanceDefualtParent(x1, y1, angAndDis, opt) - y1 is not number`);
+  }
+
   return withAngleAndDistance(document.body, x1, y1, angAndDis, opt);
 }
 /**
