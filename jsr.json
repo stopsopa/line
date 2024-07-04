@@ -4,10 +4,9 @@
   "exports": "./line.ts",
 
   "publish": {
-    "include": [
-      "LICENSE",
-      "README.md",
-      "src/**/*.ts"
+    "exclude": [
+      "bash/",
+      "**/*.sh",
     ]
   }
 }
