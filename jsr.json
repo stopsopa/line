@@ -1,5 +1,13 @@
 {
   "name": "@stopsopa/line",
   "version": "0.1.1",
-  "exports": "./line.ts"
+  "exports": "./line.ts",
+
+  "publish": {
+    "include": [
+      "LICENSE",
+      "README.md",
+      "src/**/*.ts"
+    ]
+  }
 }
