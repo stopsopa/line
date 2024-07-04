@@ -11,7 +11,9 @@
       ".tool-versions",
       "Makefile",
       "README.md",
-      "dist/"
+      "dist/",
+      "libs/",
+      "index.html"
     ]
   }
 }
