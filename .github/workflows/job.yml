@@ -39,6 +39,8 @@ jobs:
   publish:
     runs-on: ubuntu-22.04 # https://github.com/actions/runner-images#available-images
 
+    needs: test
+    
     permissions:
       contents: read
       id-token: write
