@@ -19,7 +19,7 @@
       ".github/"
     ],
     "include": [
-      "line.js"
+      "!line.js"
     ]
   }
 }
