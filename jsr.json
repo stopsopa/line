@@ -15,7 +15,11 @@
       "libs/",
       "index.html",
       "package-lock.json",
-      "yarn.lock"
+      "yarn.lock",
+      ".github/"
+    ],
+    "include": [
+      "line.js"
     ]
   }
 }

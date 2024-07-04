@@ -26,7 +26,8 @@
  *
  */
 
-const fs = require("fs");
+// const fs = require("fs");
+import fs from "fs";
 
 if (!fs.existsSync(process.argv[2])) {
   throw new Error(`file ${process.argv[2]} doesn't exist`);

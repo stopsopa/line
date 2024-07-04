@@ -1,4 +1,4 @@
-import { line } from "../line.js";
+import { line, defualtParent } from "../line.js";
 
 {
   document
@@ -422,8 +422,8 @@ line(document.body, 140, 150, 160, 150, {
         if (leave) {
           a = b = null;
         } else {
-          a = line(c.x1, c.y1, c.bx, c.by, hopt);
-          b = line(
+          a = defualtParent(c.x1, c.y1, c.bx, c.by, hopt);
+          b = defualtParent(
             c.x2,
             c.y2,
             c.dx,
@@ -448,7 +448,7 @@ line(document.body, 140, 150, 160, 150, {
     }
     run = false;
     t && t.parentNode.removeChild(t);
-    line(x1, y1, e.pageX, e.pageY, state, function (div, o, c) {
+    defualtParent(x1, y1, e.pageX, e.pageY, state, function (div, o, c) {
       callback(div, o, c, true);
     });
   });
@@ -461,7 +461,7 @@ line(document.body, 140, 150, 160, 150, {
       a = undefined;
       b && b.parentNode.removeChild(b);
       b = undefined;
-      t = line(x1, y1, e.pageX, e.pageY, state, callback);
+      t = defualtParent(x1, y1, e.pageX, e.pageY, state, callback);
     }
   });
 
@@ -502,19 +502,19 @@ line(document.body, 140, 150, 160, 150, {
       });
     });
 
-    setInterval(() => {
-      const { color, style, width, correct, correctpos } = state;
+    // setInterval(() => {
+    //   const { color, style, width, correct, correctpos } = state;
 
-      line(parent, a.x1, a.y1, a.x2, a.y2, {
-        color,
-        style,
-        width,
-        correct,
-        correctpos,
-        create: div,
-      });
+    //   line(parent, a.x1, a.y1, a.x2, a.y2, {
+    //     color,
+    //     style,
+    //     width,
+    //     correct,
+    //     correctpos,
+    //     create: div,
+    //   });
 
-      b = [a, (a = b)][0];
-    }, 2100);
+    //   b = [a, (a = b)][0];
+    // }, 2100);
   }
 }
