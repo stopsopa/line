@@ -24,9 +24,17 @@ jobs:
           make build
 
   github-pages:
+    # NOTE: In case of error:
+      # github-pages
+      # Branch "main" is not allowed to deploy to github-pages due to environment protection rules.
+      # https://github.com/orgs/community/discussions/39054#discussioncomment-6420042
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     runs-on: ubuntu-22.04
     needs: test
     steps:
@@ -38,13 +46,10 @@ jobs:
 
   publish:
     runs-on: ubuntu-22.04 # https://github.com/actions/runner-images#available-images
-
-    needs: test
-    
+    needs: test    
     permissions:
       contents: read
       id-token: write
-
     steps:
       - uses: actions/checkout@v4
       - name: Publish package
