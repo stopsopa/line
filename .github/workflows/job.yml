@@ -54,6 +54,7 @@ jobs:
           error_count: 3
 
   publish:
+    # INFO: this will fire only when jsr.json version updated
     runs-on: ubuntu-22.04 # https://github.com/actions/runner-images#available-images
     needs: test    
     permissions:
