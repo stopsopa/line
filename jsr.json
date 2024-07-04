@@ -13,7 +13,9 @@
       "README.md",
       "dist/",
       "libs/",
-      "index.html"
+      "index.html",
+      "package-lock.json",
+      "yarn.lock"
     ]
   }
 }
