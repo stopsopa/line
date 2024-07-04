@@ -3,6 +3,5 @@
 /.idea/
 node_modules
 yarn-error.log
-line.js
 /dist/line.bundle.js
 
