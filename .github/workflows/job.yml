@@ -1,0 +1,49 @@
+name: Publish
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 20.15.0
+      - name: Yarn install
+        run: |
+          make yarn
+      - name: typescript check
+        run: |
+          make tsc
+      - name: build
+        run: |
+          make build
+
+  github-pages:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    needs: test
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          error_count: 3
+
+  publish:
+    runs-on: ubuntu-22.04 # https://github.com/actions/runner-images#available-images
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish package
+        run: npx jsr publish
