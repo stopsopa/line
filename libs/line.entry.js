@@ -502,19 +502,19 @@ line(document.body, 140, 150, 160, 150, {
       });
     });
 
-    // setInterval(() => {
-    //   const { color, style, width, correct, correctpos } = state;
+    setInterval(() => {
+      const { color, style, width, correct, correctpos } = state;
 
-    //   line(parent, a.x1, a.y1, a.x2, a.y2, {
-    //     color,
-    //     style,
-    //     width,
-    //     correct,
-    //     correctpos,
-    //     create: div,
-    //   });
+      line(parent, a.x1, a.y1, a.x2, a.y2, {
+        color,
+        style,
+        width,
+        correct,
+        correctpos,
+        create: div,
+      });
 
-    //   b = [a, (a = b)][0];
-    // }, 2100);
+      b = [a, (a = b)][0];
+    }, 2100);
   }
 }
