@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "module": "ESNext", // This line configures TypeScript to output ES modules
     "lib": ["esnext", "dom"]
   },
   "files": ["./line.ts"],

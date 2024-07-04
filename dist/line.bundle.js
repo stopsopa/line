@@ -1,100 +1,57 @@
 (() => {
   // line.js
-  var tool = function(parent, x1, y1, x2, y2, opt, callback) {
-    if (!isNode(parent)) {
-      return tool.apply(this, [document.body].concat(_a(arguments)));
-    }
-    if (isObject(x2)) {
-      var k = 0, a = _a(arguments);
-      if (typeof x2.ang != "undefined") {
-        k = calcXYOffsetByVectorAngle(x2.ang, x2.dis);
-      } else if (typeof x2.rad != "undefined") {
-        k = calcXYOffsetByVectorAngleRad(x2.rad, x2.dis);
-      } else {
-        new Error("Arguments incomplete: " + JSON.stringify(a));
+  var __assign = function() {
+    __assign = Object.assign || function(t) {
+      for (var s, i = 1, n = arguments.length; i < n; i++) {
+        s = arguments[i];
+        for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+          t[p] = s[p];
       }
-      a[6] = a[5];
-      a[5] = a[4];
-      a[3] = x1 + k.x;
-      a[4] = y1 + k.y;
-      return tool.apply(this, a);
-    }
-    if (isFunction(opt)) {
-      callback = opt;
-    }
-    opt || (opt = {});
-    var o = {
-      style: "solid",
-      width: 1,
-      color: "black",
-      cls: "jqline",
-      id: false,
-      correct: true,
-      // bool|int - corection of position, give integer to move
-      correctpos: "normal",
-      // normal, top, bottom, left, right
-      css: {
-        height: "0",
-        zIndex: "999",
-        zoom: 1
-      }
+      return t;
     };
-    o = Object.assign(o, opt || {});
-    o.create = opt.create || document.createElement("div");
+    return __assign.apply(this, arguments);
+  };
+  function line(parent, x1, y1, x2, y2, opt) {
+    var _a, _b;
+    var o = __assign({ style: "solid", width: 1, color: "black", cls: "jqline", correct: true, correctpos: "normal", css: {
+      height: "0",
+      zIndex: "999",
+      zoom: 1
+    } }, opt);
+    if (!isNode(o.create)) {
+      o.create = document.createElement("div");
+    }
     var ang = calcAngle(x1, y1, x2, y2);
     var c = correct(x1, y1, x2, y2, o, ang);
     c.distance = calcDistance(x1, y1, x2, y2);
-    o.css = Object.assign(
-      Object.assign({}, o.css),
-      {
-        borderTop: o.width + "px " + o.style + " " + o.color,
-        position: "absolute",
-        width: c.distance + "px",
-        // "-webkit-transform": "rotate(" + ang + "deg)",
-        // "-moz-transform": "rotate(" + ang + "deg)",
-        // "-ms-transform": "rotate(" + ang + "deg)",
-        // "-o-transform": "rotate(" + ang + "deg)",
-        transform: "rotate(" + ang + "deg)",
-        "transform-origin": "0 0",
-        // "-ms-transform-origin": "0 0" /* IE 9 */,
-        // "-webkit-transform-origin": "0 0" /* Chrome, Safari, Opera */,
-        left: x1 + c.x + "px",
-        top: y1 + c.y + "px"
-      },
-      opt.css
-    );
+    o.css = Object.assign(Object.assign({}, o.css), {
+      borderTop: o.width + "px " + o.style + " " + o.color,
+      position: "absolute",
+      width: c.distance + "px",
+      // "-webkit-transform": "rotate(" + ang + "deg)",
+      // "-moz-transform": "rotate(" + ang + "deg)",
+      // "-ms-transform": "rotate(" + ang + "deg)",
+      // "-o-transform": "rotate(" + ang + "deg)",
+      transform: "rotate(" + ang + "deg)",
+      "transform-origin": "0 0",
+      // "-ms-transform-origin": "0 0" /* IE 9 */,
+      // "-webkit-transform-origin": "0 0" /* Chrome, Safari, Opera */,
+      left: x1 + c.x + "px",
+      top: y1 + c.y + "px"
+    }, opt.css);
     Object.assign(o.create.style, o.css);
-    o.cls && o.create.classList.add(o.cls);
-    o.id && o.create.setAttribute("id", o.id);
+    o.cls && ((_a = o.create) === null || _a === void 0 ? void 0 : _a.classList.add(o.cls));
+    o.id && ((_b = o.create) === null || _b === void 0 ? void 0 : _b.setAttribute("id", o.id));
     if (!parent.contains(o.create)) {
       parent.appendChild(o.create);
     }
-    isFunction(callback) && callback(o.create, o, c);
+    if (typeof o.callback === "function") {
+      o.callback(o.create, o, c);
+    }
     return o.create;
-  };
-  tool.radToAng = radToAng;
-  tool.angToRad = angToRad;
-  tool.calcDistance = calcDistance;
-  tool.calcAngleRad = calcAngleRad;
-  tool.calcAngle = calcAngle;
-  tool.calcXYOffsetByVectorAngle = calcXYOffsetByVectorAngle;
-  tool.calcXYOffsetByVectorAngleRad = calcXYOffsetByVectorAngleRad;
-  var line_default = tool;
-  function _a(a) {
-    return Array.prototype.slice.call(a, 0);
   }
-  function isFunction(a) {
-    return typeof a == "function" || false;
-  }
-  function isObject(obj) {
-    var type = typeof obj;
-    return type === "function" || type === "object" && !!obj;
-  }
-  function angToRad(ang) {
-    return ang * (Math.PI / 180);
-  }
-  function radToAng(rad) {
-    return rad * (180 / Math.PI);
+  function isNode(o) {
+    return typeof Node === "object" ? o instanceof Node : o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName === "string";
   }
   function calcDistance(x1, y1, x2, y2) {
     return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
@@ -106,52 +63,52 @@
     var a = calcAngleRad(x1, y1, x2, y2) * (180 / Math.PI);
     return a < 0 ? a += 360 : a;
   }
-  function calcXYOffsetByVectorAngleRad(rad, dis) {
-    return {
-      // http://stackoverflow.com/a/10962780
-      x: Math.cos(rad) * dis,
-      y: Math.sin(rad) * dis
-    };
-  }
-  function calcXYOffsetByVectorAngle(ang, dis) {
-    return calcXYOffsetByVectorAngleRad(angToRad(ang), dis);
-  }
-  function isNode(o) {
-    return typeof Node === "object" ? o instanceof Node : o && typeof o === "object" && typeof o.nodeType === "number" && typeof o.nodeName === "string";
-  }
   function correct(x1, y1, x2, y2, o, ang) {
     ang || (ang = calcAngle(x1, y1, x2, y2));
     var hw = o.width / 2;
     var hwo = hw;
     var sw = false;
-    if (Number.isInteger(o.correct)) {
-      var c = o.correct;
+    if (typeof o.correct === "number") {
+      var c_1 = o.correct;
       switch (true) {
         case o.correctpos == "normal":
-          hw += c;
+          hw += c_1;
           break;
         case (o.correctpos == "top" && ang > 90 && ang < 270):
           sw = true;
-          c = -Math.abs(c);
+          c_1 = -Math.abs(c_1);
           break;
         case (o.correctpos == "bottom" && (ang < 90 || ang > 270)):
           sw = true;
-          c = -Math.abs(c);
+          c_1 = -Math.abs(c_1);
           break;
         case (o.correctpos == "left" && ang > 0 && ang < 180):
           sw = true;
-          c = -Math.abs(c);
+          c_1 = -Math.abs(c_1);
           break;
         case (o.correctpos == "right" && (ang < 0 || ang > 180)):
           sw = true;
-          c = -Math.abs(c);
+          c_1 = -Math.abs(c_1);
           break;
       }
-      hw += c;
+      hw += c_1;
     }
     var rad = calcAngleRad(x1, y1, x2, y2);
     var radminhalf = rad - Math.PI / 2;
-    var c = {};
+    var c = {
+      x: 0,
+      y: 0,
+      oy: 0,
+      ox: 0,
+      ang: 0,
+      rad: 0,
+      ox2: 0,
+      oy2: 0,
+      x1: 0,
+      y1: 0,
+      x2: 0,
+      y2: 0
+    };
     if (o.correct === false) {
       c.x = c.y = c.oy = c.ox = 0;
     } else {
@@ -518,8 +475,8 @@ message AwesomeMessage {
           if (leave) {
             a = b = null;
           } else {
-            a = line_default(c.x1, c.y1, c.bx, c.by, hopt);
-            b = line_default(
+            a = line(c.x1, c.y1, c.bx, c.by, hopt);
+            b = line(
               c.x2,
               c.y2,
               c.dx,
@@ -542,7 +499,7 @@ message AwesomeMessage {
       }
       run = false;
       t && t.parentNode.removeChild(t);
-      line_default(x1, y1, e.pageX, e.pageY, state, function(div, o, c) {
+      line(x1, y1, e.pageX, e.pageY, state, function(div, o, c) {
         callback(div, o, c, true);
       });
     });
@@ -554,7 +511,7 @@ message AwesomeMessage {
         a = void 0;
         b && b.parentNode.removeChild(b);
         b = void 0;
-        t = line_default(x1, y1, e.pageX, e.pageY, state, callback);
+        t = line(x1, y1, e.pageX, e.pageY, state, callback);
       }
     });
     {
@@ -573,7 +530,7 @@ message AwesomeMessage {
         y2: 200
       };
       const { color, style, width, correct: correct2, correctpos } = state;
-      line_default(parent, 140, 150, 160, 150, {
+      line(parent, 140, 150, 160, 150, {
         color,
         style,
         width,
@@ -590,7 +547,7 @@ message AwesomeMessage {
       });
       setInterval(() => {
         const { color: color2, style: style2, width: width2, correct: correct3, correctpos: correctpos2 } = state;
-        line_default(parent, a.x1, a.y1, a.x2, a.y2, {
+        line(parent, a.x1, a.y1, a.x2, a.y2, {
           color: color2,
           style: style2,
           width: width2,

@@ -1,4 +1,4 @@
-import line from "../line.js";
+import { line } from "../line.js";
 
 {
   document
@@ -139,7 +139,6 @@ message AwesomeMessage {
       this.events[event].push(callback);
     },
 
-    
     publish(event, data) {
       if (this.events[event])
         this.events[event].forEach((callback) => callback(data));
