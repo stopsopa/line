@@ -9,6 +9,7 @@
 
 ***
 
+Here is also an attepmt to release it using new JSR
 https://jsr.io/@stopsopa/line
 
 
