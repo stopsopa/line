@@ -9,8 +9,14 @@
 
 ***
 
+
 Here is also an attepmt to release it using new JSR
 https://jsr.io/@stopsopa/line
+
+>
+> [!WARNING]
+> Documentation below is not up to date... go to demo page
+>
 
 
 ## Demo:
