@@ -2,7 +2,7 @@
   "name": "@stopsopa/line",
   "version": "0.1.3",
   "exports": "./line.ts",
-
+  "license": "MIT",
   "publish": {
     "exclude": [
       "bash/",
