@@ -22,6 +22,7 @@ https://jsr.io/@stopsopa/line
 ## Demo:
 
 [Demo](https://stopsopa.github.io/line/)
+![Image](https://github.com/user-attachments/assets/5dd9baa2-ef65-4179-885e-078d1cf69d53)
 
 
 # readme below requires updating
