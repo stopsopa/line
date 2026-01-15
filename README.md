@@ -18,6 +18,9 @@ https://jsr.io/@stopsopa/line
 > Documentation below is not up to date... go to demo page
 >
 
+# Installation
+
+Just download one file [line.ts](line.ts). There is no need for another dependency.
 
 ## Demo:
 
