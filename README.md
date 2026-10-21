@@ -86,6 +86,9 @@ $.line(x1, y1, x2, y2, opt, function (div, opt) {
 })
 ```
 
+# alternatives
+
+https://williamngan.github.io/line/app.html
 
 
 # License
